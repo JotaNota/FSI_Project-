@@ -21,5 +21,3 @@ EXEC sp_rename 'FSI_NORMALIZED.total_fsi', 'total_fsi', 'COLUMN';
 
 
 
-SELECT * 
-FROM FSI_NORMALIZED;
