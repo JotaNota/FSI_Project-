@@ -9,7 +9,6 @@ The goal is to prepare the dataset for **descriptive and visual analysis** on a 
 - Power BI will be used.
 
 ## 📑 Project Structure
-
 - [Data](#-data)
 - [SQL](#-sql)
   - [Normalization](#-normalization)
@@ -39,6 +38,7 @@ This folder contains scripts to transform the `FSI_RAW` table into a normalized 
 #### 1: Load dataset and rename original table
 
 ```sql
+
 USE [FSI-PROJECT];
 GO
 EXEC sp_rename 'dbo.FSI_Raw$', 'FSI_RAW', 'OBJECT';
