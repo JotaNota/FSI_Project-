@@ -9,12 +9,14 @@ The goal is to prepare the dataset for **descriptive and visual analysis** on a 
 - Power BI will be used.
 
 ## 📑 Project Structure
-
 - [Data](#-data)
 - [SQL](#-sql)
-    - [Normalization](#-normalization)
+  - [Normalization](#-normalization)
+- [Python](#-python)
+  - [Add_Continent.ipynb](#-Add_Continent.ipynb)
+  - [Add_ISO_Lat_Long.ipynb](#-Add_ISO_Latitude_Longitude.ipynb)
 
-> *Additional folders (e.g., `output/`, `powerbi/`, `python/`) will be added in future branches.*
+> *Additional folders (e.g., `output/`, `powerbi/`,) will be added in future branches.*
 
 ---
 
@@ -36,6 +38,7 @@ This folder contains scripts to transform the `FSI_RAW` table into a normalized 
 #### 1: Load dataset and rename original table
 
 ```sql
+
 USE [FSI-PROJECT];
 GO
 EXEC sp_rename 'dbo.FSI_Raw$', 'FSI_RAW', 'OBJECT';
@@ -86,10 +89,40 @@ SET rank_num = TRY_CAST(LEFT(rank, PATINDEX('%[^0-9]%', rank + 'x') - 1) AS INT)
 
 ```
 
+## 📂Python
+ ### 📌 Notebooks
+This folder contains two Jupyter Notebooks used to enrich a new copy of the table we are working on, called table `FSI_NORMALIZED_PY` in a SQL Server database with relevant geographic information.
+
+The process is divided into two parts:
+
+---
+
+### ► [`Add_Continent.ipynb`](./python/notebooks/Add_Continent.ipynb)
+
+- Connects to the SQL Server database.
+- Extracts a distinct list of countries from the `FSI_NORMALIZED_PY` table.
+- Uses the `country_converter` library to map each country to a continent.
+- Updates the `continent` column in SQL for all matching countries.
+
+---
+
+### ► [`Add_ISO_Latitude_Longitude.ipynb`](./python/notebooks/Add_ISO_Latitude_Longitude.ipynb)
+
+- Fetches country metadata from Google’s dataset.
+- Standardizes country names and joins them with the SQL List.
+- Validates ISO  and filter valid rows.
+- Updates the `iso`, `latitude`, and `longitude` columns in the SQL table.
+
+---
+
+### ⚠️ Note
+
+These scripts are part of a quick and pragmatic solution to enrich the database with the geographic data needed for this specific project.
+
+In a future iteration, I'll try to perform a deeper analysis of country naming inconsistencies, improve matching accuracy, and refine data quality.
 
 
-
-
+---
 
 ## Author
 
