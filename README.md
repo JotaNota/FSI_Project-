@@ -1,17 +1,12 @@
-# 📊 FSI Dataset – Transformation and Analysis
-This project focuses on cleaning, transforming, and visualizing data related to the **Fragile States Index (FSI)**.
 
-The goal is to prepare the dataset for **descriptive and visual analysis** on a **PowerBi** Dashboard.
 
-**Tools used**  
-- SQL Server 
-- Python 
-- Power BI will be used.
+---
 
 ## 📑 Project Structure
 - [Data](#-data)
 - [SQL](#-sql)
   - [Normalization](#-normalization)
+  - [Modeling](#-Modeling)
 - [Python](#-python)
   - [Add_Continent.ipynb](#-Add_Continent.ipynb)
   - [Add_ISO_Lat_Long.ipynb](#-Add_ISO_Latitude_Longitude.ipynb)
@@ -87,6 +82,27 @@ ALTER TABLE FSI_NORMALIZED ADD rank_num INT;
 UPDATE FSI_NORMALIZED
 SET rank_num = TRY_CAST(LEFT(rank, PATINDEX('%[^0-9]%', rank + 'x') - 1) AS INT);
 
+
+---
+
+### 📌 Modeling
+
+This part covers the creation and population of tables using SQL.
+
+It includes:
+ - Preparation of a database from normalized data  
+ - Definition of tables  
+ - Population of tables with initial data  
+ - Assignment of primary keys (PK) and foreign keys (FK)  
+ 
+#### **SQL Data Modeling**
+
+- **Table Preparation**: Creating a working table (`FSI_SQL_MODELING`) from existing normalized data.
+- **COUNTRY Table**: Definition, creation, and population.
+- **FACTORS Table**: Definition, creation, and population.
+- **FRAGILITY_INDEX Table**: Definition, creation, and population with yearly fragility scores.
+- **MEASUREMENT Table**: Definition, creation, and population with factor-specific values.
+
 ```
 
 ## 📂Python
@@ -124,7 +140,6 @@ In a future iteration, I'll try to perform a deeper analysis of country naming i
 
 ---
 
-## Author
+📝 **Notes**
 
-**JotaNota**  
-[github.com/JotaNota](https://github.com/JotaNota)
+- A table view was edited to check inside SQL that everything was functioning properly.
