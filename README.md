@@ -1,27 +1,25 @@
-# 📊 FSI Dataset – Transformation and Analysis
-This project focuses on cleaning, transforming, and visualizing data related to the **Fragile States Index (FSI)**.
+📌 **FSI Project – SQL Data Modeling**
 
-The goal is to prepare the dataset for **descriptive and visual analysis** on a **PowerBi** Dashboard.
+This part covers the creation and population of tables using SQL.
 
-**Tools used**  
-- SQL Server 
-- Python 
-- Power BI will be used.
+It includes:
+ - Preparation of a database from normalized data  
+ - Definition of tables  
+ - Population of tables with initial data  
+ - Assignment of primary keys (PK) and foreign keys (FK)  
 
-## 🗂️ Project Structure
-FSI_Transformation_and_Analysis
-   Data/
-       raw/
-       normalized/ → Normalized Tables
-       output/ → Dataset for analysis
-   docs/
-   powerbi/ → .pbix
-   sql/ → Scripts SQL
-   DEVLOG.md → logs
-   README.md
+---
 
+📂 **Modeling**
 
-## Author
+- **Table Preparation**: Creating a working table (`FSI_SQL_MODELING`) from existing normalized data.
+- **COUNTRY Table**: Definition, creation, and population.
+- **FACTORS Table**: Definition, creation, and population.
+- **FRAGILITY_INDEX Table**: Definition, creation, and population with yearly fragility scores.
+- **MEASUREMENT Table**: Definition, creation, and population with factor-specific values.
 
-**JotaNota**  
-[github.com/JotaNota](https://github.com/JotaNota)
+---
+
+📝 **Notes**
+
+- A table view was edited to check inside SQL that everything was functioning properly.
