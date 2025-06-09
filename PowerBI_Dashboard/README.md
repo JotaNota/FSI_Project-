@@ -19,3 +19,12 @@ The dashboard explores how selected social factors—such as **security**, **pub
   - **Conclusion**
 
 --
+
+## Cloning the Repository
+To use this dashboard locally, follow these steps:
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/JotaNota/FSI_Project-.git
+
+--
