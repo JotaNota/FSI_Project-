@@ -10,7 +10,7 @@ JOIN [FSI-PROJECT].[dbo].[MEASUREMENT] m ON m.index_ID = fi.index_ID;
 
 
 -- ► 02. Check index_ID has 12 factors
--- Total number of index_ID entries (country-year combinations)
+-- Total number of index_ID entrie
 SELECT COUNT(*) AS total_index_entries 
 FROM [FSI-PROJECT].[dbo].[FRAGILITY_INDEX];
 

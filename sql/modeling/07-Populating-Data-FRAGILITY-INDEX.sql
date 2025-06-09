@@ -1,4 +1,3 @@
--- Insert data into FRAGILITY_INDEX 
 -- Joining country_ID from COUNTRY
 INSERT INTO [FSI-PROJECT].[dbo].[FRAGILITY_INDEX] (country_ID, year, rank, total_FSI, level)
 SELECT

@@ -18,6 +18,3 @@ EXEC sp_rename 'FSI_NORMALIZED.[Demographic Pressures]', 'demographic_pressures'
 EXEC sp_rename 'FSI_NORMALIZED.[Refugees and IDPs]', 'refugees_and_idps', 'COLUMN';
 EXEC sp_rename 'FSI_NORMALIZED.[External Intervention]', 'external_intervention', 'COLUMN';
 EXEC sp_rename 'FSI_NORMALIZED.total_fsi', 'total_fsi', 'COLUMN';
-
-
-

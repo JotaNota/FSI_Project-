@@ -1,4 +1,3 @@
--- Factor Table
 -- factors matching FSI_SQL_MODELING
 INSERT INTO [FSI-PROJECT].[dbo].[FACTORS] (factor_name)
 VALUES
