@@ -1,4 +1,18 @@
+# 📊 FSI Dataset – Transformation and Analysis
+This project focuses on cleaning, transforming, and visualizing data related to the **Fragile States Index (FSI)**.— a global index measuring state fragility based on social, political, and economic factors.
 
+**Objective** 
+Prepare the dataset for **descriptive and visual analysis** on a **Power BI Dashboard**.
+
+**Key Features**:
+- Data cleaning and normalization in SQL Server.
+- Enrichment with geographic metadata using Python.
+- Interactive Power BI Dashboard for analysis.
+  
+**Tools used**  
+- SQL Server 
+- Python 
+- Power BI will be used.
 
 ---
 
@@ -6,12 +20,11 @@
 - [Data](#-data)
 - [SQL](#-sql)
   - [Normalization](#-normalization)
-  - [Modeling](#-Modeling)
+  - [Modeling](#-modeling)
 - [Python](#-python)
-  - [Add_Continent.ipynb](#-Add_Continent.ipynb)
-  - [Add_ISO_Lat_Long.ipynb](#-Add_ISO_Latitude_Longitude.ipynb)
+  - [Notebooks](#-notebooks)
+- [Power BI Dashboard](#-power-bi-dashboard)
 
-> *Additional folders (e.g., `output/`, `powerbi/`,) will be added in future branches.*
 
 ---
 
@@ -24,7 +37,7 @@ This folder contains:
 ---
 
 ## 📂 SQL
-### 📌 Normalization
+### 📝 Normalization
 
 This folder contains scripts to transform the `FSI_RAW` table into a normalized format for analysis by standardizing column names and adjusting data types.
 
@@ -70,7 +83,6 @@ EXEC sp_rename 'FSI_NORMALIZED.[Demographic Pressures]', 'demographic_pressures'
 EXEC sp_rename 'FSI_NORMALIZED.[Refugees and IDPs]', 'refugees_and_idps', 'COLUMN';
 EXEC sp_rename 'FSI_NORMALIZED.[External Intervention]', 'external_intervention', 'COLUMN';
 EXEC sp_rename 'FSI_NORMALIZED.total_fsi', 'total_fsi', 'COLUMN';
-
 ```
 
 #### 4 Change the rank column data type (text → integer)
@@ -81,11 +93,10 @@ ALTER TABLE FSI_NORMALIZED ADD rank_num INT;
 -- ► Step 2: Extract original column number and convert it
 UPDATE FSI_NORMALIZED
 SET rank_num = TRY_CAST(LEFT(rank, PATINDEX('%[^0-9]%', rank + 'x') - 1) AS INT);
-
+```
 
 ---
-
-### 📌 Modeling
+### 📝 Modeling
 
 This part covers the creation and population of tables using SQL.
 
@@ -103,10 +114,10 @@ It includes:
 - **FRAGILITY_INDEX Table**: Definition, creation, and population with yearly fragility scores.
 - **MEASUREMENT Table**: Definition, creation, and population with factor-specific values.
 
-```
+--- 
 
-## 📂Python
- ### 📌 Notebooks
+## 📂 Python
+### 📝 Notebooks
 This folder contains two Jupyter Notebooks used to enrich a new copy of the table we are working on, called table `FSI_NORMALIZED_PY` in a SQL Server database with relevant geographic information.
 
 The process is divided into two parts:
@@ -129,17 +140,65 @@ The process is divided into two parts:
 - Validates ISO  and filter valid rows.
 - Updates the `iso`, `latitude`, and `longitude` columns in the SQL table.
 
----
-
 ### ⚠️ Note
 
 These scripts are part of a quick and pragmatic solution to enrich the database with the geographic data needed for this specific project.
 
 In a future iteration, I'll try to perform a deeper analysis of country naming inconsistencies, improve matching accuracy, and refine data quality.
 
+---
+## 📂 Power BI Dashboard
+This section contains the Power BI dashboard that visualizes the social factors' influence on the Fragile States Index (FSI).
+
+## Structure
+- **Scatter Plots**: Visualize the relationship between the average value of social factors and the FSI across countries.
+- **Time Series Charts**: Show how specific factors evolve over time by country, highlighting trends and patterns.
+- **Comparative Analysis**: Allows the comparison between stable and fragile countries using key social factors.
+- **Pie Charts and Tables**: Present the composition of the FSI by social factor for selected countries.
+.
+## Usage
+- Navigate through tabs like:
+  - **What is the FSI?**
+  - **What will we do?**
+  - **FSI and factor by country and year**
+  - **Do social factors influence the FSI?**
+  - **Conclusion**
+
+
+<img src="https://github.com/user-attachments/assets/95d15320-8f57-4ef1-9023-a9e12055c1d3" alt="Imagen" width="400"/>
+<img src="https://github.com/user-attachments/assets/433af8f0-fd7e-4b9a-92bb-69a0639aafeb" alt="Imagen" width="400"/>
+<img src="https://github.com/user-attachments/assets/5d8393c5-9284-4fe9-8672-6b825ac6ea28" alt="Imagen" width="400"/>
+<img src="https://github.com/user-attachments/assets/8adb4a62-94b6-4781-bbe5-2447ddf16e8c" alt="Imagen" width="400"/>
+
+
 
 ---
 
-📝 **Notes**
+## Cloning the Repository
+To use this dashboard locally, follow these steps:
 
-- A table view was edited to check inside SQL that everything was functioning properly.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/JotaNota/FSI_Project-.git
+---
+
+## Requirements
+
+- **SQL Server**: For database storage and transformation.
+- **Python 3.x**: For data enrichment.
+  - `pandas`, `country_converter`
+- **Jupyter Notebook**: For running and documenting Python steps.
+- **Power BI**: For data visualization.
+
+```bash
+pip install pandas country_converter
+```
+
+---
+## Contact
+
+For questions or suggestions:
+- **JotaNota**  
+  [GitHub Profile](https://github.com/JotaNota)
+---
+
